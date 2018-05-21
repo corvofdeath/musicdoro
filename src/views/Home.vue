@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <Metronome></Metronome>
+        <Timer></Timer>
+    </div>  
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Metronome from '@/components/Metronome.vue';
+import Timer from '@/components/Timer.vue';
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+    name: "home",
+    components: {
+        Metronome,
+        Timer
+    },
+    data: function () {
+        return {
+            
+        }
+    }
+};
 </script>
