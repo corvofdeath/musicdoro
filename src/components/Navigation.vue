@@ -1,14 +1,14 @@
 <template>
     <v-bottom-nav :value="true" absolute color="transparent">
-        <v-btn flat color="teal" value="home">
+        <v-btn flat color="teal" value="home" to="/">
             <span>Início</span>
             <v-icon>home</v-icon>
         </v-btn>
-        <v-btn flat color="teal" value="exemple">
+        <v-btn flat color="teal" value="exemple" to="/exemple">
             <span>Aprenda</span>
             <v-icon>school</v-icon>
         </v-btn>
-        <v-btn flat color="teal" value="exercice">
+        <v-btn flat color="teal" value="exercice" to="/exercite">
             <span>Exercite</span>
             <v-icon>hourglass_full</v-icon>
         </v-btn>
@@ -32,7 +32,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+a {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 
+.bottom-nav .btn {
+    height: 36px;
+    padding: 12px 0 10px;
+}
 </style>
 

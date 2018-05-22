@@ -3,7 +3,7 @@
         <div class="home-content">
             <span class="brand">MUSICDORO</span>
             <p class="gradient-mask-text"> É uma ferramenta interativa que une a tecnica do <strong>Pomodoro</strong> ao ensino musical.
-            Aprenda como utilizar essa tecnica para estudar e exercitar a <strong>Divisão Rítmica</strong> e aperfeiçoar suas habilidades!</p>
+            Aprenda como utilizar essa tecnica para estudar e exercitar a <strong>Divisão Rítmica</strong>.</p>
             <div class="padding10"></div>
             <img src="../assets/metronome.svg" alt="Metronome" height="42" width="42">
             <img src="../assets/apple.svg" alt="apple-pomodoro" height="42" width="42">
@@ -31,10 +31,6 @@ export default {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
-}
-
-.padding10 {
-    padding: 10px;
 }
 
 body{

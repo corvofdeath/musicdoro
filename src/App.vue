@@ -43,4 +43,20 @@ body {
 .btn {
     border: 0;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.padding10 {
+    padding: 10px;
+}
+
+.padding20 {
+    padding: 20px;
+}
+
+.padding30 {
+    padding: 30px;
+}
 </style>
