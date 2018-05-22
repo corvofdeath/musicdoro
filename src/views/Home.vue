@@ -5,8 +5,8 @@
             <p class="gradient-mask-text"> É uma ferramenta interativa que une a tecnica do <strong>Pomodoro</strong> ao ensino musical.
             Aprenda como utilizar essa tecnica para estudar e exercitar a <strong>Divisão Rítmica</strong>.</p>
             <div class="padding10"></div>
+            <img src="../assets/apple.svg" alt="apple-pomodoro" height="42" width="42">            
             <img src="../assets/metronome.svg" alt="Metronome" height="42" width="42">
-            <img src="../assets/apple.svg" alt="apple-pomodoro" height="42" width="42">
         </div>
     </div>
 </template>
