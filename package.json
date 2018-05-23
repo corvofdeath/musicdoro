@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "start": "node server.js"
   },
   "dependencies": {
+    "express": "^4.16.3",
     "rxjs": "^6.2.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
