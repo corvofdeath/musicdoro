@@ -38,11 +38,8 @@ body{
 }
 
 .home{
-    /*background-image: url("http://purplerockscissors.com/assets/images/home_mud-illy.jpg");*/
-    background-image: url("http://www.meetharis.com/images/polygon.jpg");
     background-position: center center;
     background-repeat: no-repeat;
-    /*background-size: contain;*/
     background-size: cover;
     display: flex;
     align-items: center;
@@ -75,7 +72,6 @@ strong{
     position: relative;
     padding: 60px 20px;
     background: transparent; 
-    /*background: url("http://newevolutiondesigns.com/images/freebies/polygon-wallpaper-14.jpg");*/
     background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #61c2ff), color-stop(100%, #cd4444));
     background: -webkit-linear-gradient(-45deg, #61c2ff 0%, #cd4444 100%);
     -webkit-background-clip: text; 
