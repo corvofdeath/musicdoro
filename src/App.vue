@@ -1,5 +1,5 @@
 <template>
-    <v-app id="app">
+    <v-app id="app" :dark="flash">
         <v-content fluid fill-height>
             <!-- Header -->
             <Toolbar></Toolbar>
@@ -20,6 +20,8 @@ import VContainer from "vuetify/es5/components/VGrid/VContainer";
 import Toolbar from '@/components/Toolbar.vue';
 import Navigation from '@/components/Navigation.vue';
 
+import NotificationService from './services/notification.js'
+
 export default {
     name: "app",
     components: {
@@ -29,7 +31,14 @@ export default {
         Navigation
     },
     data: function() {
-        return {};
+        return {
+            flash: false
+        };
+    },
+    mounted: function () {
+        NotificationService.getFlashNotification().subscribe(value => {
+            this.flash = value;
+        })
     }
 }
 </script>

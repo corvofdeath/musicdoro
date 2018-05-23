@@ -37,6 +37,8 @@
 
 <script>
 
+import NotificationService from '../services/notification.js';
+
 let exercices = [
     {
         title: 'Simples',
@@ -70,6 +72,13 @@ let exercices = [
 
 export default {
 
+    mounted: function () {
+        NotificationService.getStartNotification().subscribe(value => {
+
+            if (value)
+                this.onStart();
+        });
+    },
     data: function () {
         return {
             now: Math.trunc((new Date()).getTime() / 1000),
@@ -156,7 +165,6 @@ export default {
 .text {
     color: white;
     font-size: 20px;
-    font-family: 'Roboto Condensed', serif;
     font-weight: 25;
     margin-top:10px !important;
     margin-bottom: 10px !important;

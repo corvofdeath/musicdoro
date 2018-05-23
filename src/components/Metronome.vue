@@ -18,6 +18,8 @@ import VContainer from "vuetify/es5/components/VGrid/VContainer";
 import VBtn from "vuetify/es5/components/VBtn";
 import VCheckbox from "vuetify/es5/components/VCheckbox";
 
+import NotificationService from '../services/notification.js';
+
 const metronomeSound = new Audio(require("@/assets/metronome.wav"));
 const metronomeUpSound = new Audio(require("@/assets/metronome-up.wav"));
 
@@ -77,7 +79,10 @@ export default {
             this.running = !this.running;
             this.tickActive = false;
 
+            NotificationService.sendStartNotification(this.running);
+
             if (this.running) {
+
                 metronomeUpSound.play();
                 this.updateBackground();
                 setTimeout(() => {
@@ -113,6 +118,7 @@ export default {
         },
         updateBackground() {
             this.backgroundActive = !this.backgroundActive;
+            NotificationService.sendFlashNotification(this.backgroundActive && this.enableBackground)
         },
         tapTempo() {
             if (!this.running) {
