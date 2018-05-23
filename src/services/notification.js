@@ -2,6 +2,7 @@ import { Observable, Subject } from 'rxjs';
 
 const startSubject = new Subject();
 const flashSubject = new Subject();
+const endSubject = new Subject();
 
 export default {
 
@@ -11,6 +12,14 @@ export default {
 
     sendStartNotification: function (value) {
         startSubject.next(value);
+    },
+
+    getEndNotification: function () {
+        return endSubject.asObservable();
+    },
+
+    sendEndNotification: function (value) {
+        endSubject.next(value);
     },
 
     getFlashNotification: function () {

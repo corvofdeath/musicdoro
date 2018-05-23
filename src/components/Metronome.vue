@@ -64,6 +64,11 @@ export default {
         measure: "reset"
     },
     mounted: function () {
+
+        NotificationService.getEndNotification().subscribe(() => {
+            this.running = !this.running;
+        })
+
         const frame = () => {
             const d = performance.now() - this.time;
             if (d / this.totalCount > this.interval) {

@@ -25,7 +25,7 @@
                     <v-layout row>
                         <v-flex class="aling">
                             <div class="text-center">
-                                <v-btn :color="btnColor" @click.native="onStart">{{ btnLabel }}</v-btn>        
+                                <v-btn :color="isOver ? 'success' : 'error' " @click.native="onStart">{{ isOver ? 'Start' : 'Reset' }}</v-btn>        
                             </div>
                         </v-flex>
                     </v-layout>
@@ -39,7 +39,9 @@
 
 import NotificationService from '../services/notification.js';
 
-let exercices = [
+const endSound = new Audio(require("@/assets/end.wav"));
+
+const exercices = [
     {
         title: 'Simples',
         description: 'Uma nota por tempo'
@@ -82,10 +84,8 @@ export default {
     data: function () {
         return {
             now: Math.trunc((new Date()).getTime() / 1000),
-            start: Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 5) / 1000),
-            btnLabel: 'Start',
+            start: Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 1) / 1000),
             isOver: true,
-            btnColor: 'success',
             interval: null,
             exercices: exercices,
             count: 0
@@ -94,11 +94,8 @@ export default {
     methods: {
         onStart: function () {
 
-            this.btnLabel = 'Reset';
-            this.btnColor = 'error';
-
             this.now = Math.trunc((new Date()).getTime() / 1000);
-            this.start = Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 5) / 1000);
+            this.start = Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 1) / 1000);
 
             if (this.isOver === true) { 
 
@@ -114,15 +111,15 @@ export default {
         },
         verify: function () {
             if (this.minutes === 0 && this.seconds === 0) {
-                this.btnLabel = 'Start';
-                this.btnColor = 'success';
                 this.isOver = true;
                 this.count++;
 
                 this.now = Math.trunc((new Date()).getTime() / 1000);
-                this.start = Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 5) / 1000);
+                this.start = Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 1) / 1000);
 
+                endSound.play();
                 window.clearInterval(this.interval);
+                NotificationService.sendEndNotification();
             }
         }
     },
