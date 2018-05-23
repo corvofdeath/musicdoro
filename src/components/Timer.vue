@@ -82,7 +82,7 @@ export default {
     data: function () {
         return {
             now: Math.trunc((new Date()).getTime() / 1000),
-            start: Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 1) / 1000),
+            start: Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 5) / 1000),
             btnLabel: 'Start',
             isOver: true,
             btnColor: 'success',
@@ -98,7 +98,7 @@ export default {
             this.btnColor = 'error';
 
             this.now = Math.trunc((new Date()).getTime() / 1000);
-            this.start = Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 1) / 1000);
+            this.start = Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 5) / 1000);
 
             if (this.isOver === true) { 
 
@@ -120,7 +120,7 @@ export default {
                 this.count++;
 
                 this.now = Math.trunc((new Date()).getTime() / 1000);
-                this.start = Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 1) / 1000);
+                this.start = Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 5) / 1000);
 
                 window.clearInterval(this.interval);
             }
