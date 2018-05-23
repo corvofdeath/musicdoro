@@ -1,30 +1,126 @@
 <template>
-    <div class="block">
-        <div>
-            <p class="digit">{{ minutes | two_digits }}</p>
-            <p class="text">Minutes</p>
-        </div>
-        <div>
-            <p class="digit">{{ seconds | two_digits }}</p>
-            <p class="text">Seconds</p>
-        </div>
-    </div>
+    <v-container grid-list-xl>
+        <v-layout column="true">
+            <v-flex>
+                <v-card dark color="primary">
+                    <v-card-title class="text-center"><h2>Pomodoro</h2></v-card-title>
+                    <v-layout row>
+                        <v-flex class="aling" sm6>
+                            <div class="block">
+                                <div>
+                                    <p class="digit">{{ minutes | two_digits }}</p>
+                                    <p class="text">Minutes</p>
+                                </div>
+                                <div>
+                                    <p class="digit">{{ seconds | two_digits }}</p>
+                                    <p class="text">Seconds</p>
+                                </div>
+                            </div>
+                        </v-flex>
+                        <v-flex class="aling" sm6>
+                            <p>Exercicio: {{ exercices[count].title }}</p>
+                            <p>{{ exercices[count].description }}</p>         
+                        </v-flex>          
+                    </v-layout>
+                    <v-layout row>
+                        <v-flex class="aling">
+                            <div class="text-center">
+                                <v-btn :color="isOver ? 'success' : 'error' " @click.native="onStart">{{ isOver ? 'Start' : 'Reset' }}</v-btn>        
+                            </div>
+                        </v-flex>
+                    </v-layout>
+                </v-card>
+            </v-flex>
+        </v-layout>
+    </v-container>  
 </template>
 
 <script>
+
+import NotificationService from '../services/notification.js';
+
+const endSound = new Audio(require("@/assets/end.wav"));
+
+const exercices = [
+    {
+        title: 'Simples',
+        description: 'Uma nota por tempo'
+    },
+    {
+        title: 'Duplo',
+        description: 'Duas notas por tempo'
+    },
+    {
+        title: 'Tercinas',
+        description: 'Três notas por tempo'
+    },
+    {
+        title: 'Quiáltera',
+        description: 'Quatro notas por tempo'
+    },
+    {
+        title: 'Quintinas',
+        description: 'Cinco notas por tempo'
+    },
+    {
+        title: 'Sextina',
+        description: 'Seis notas por tempo'
+    },
+    {
+        title: 'Parabéns',
+        description: 'Recomece'
+    },
+];
+
 export default {
 
     mounted: function () {
-        this.$nextTick(() => {
-            window.setInterval(() => {
-                this.now = Math.trunc((new Date()).getTime() / 1000);
-            }, 1000)
+        NotificationService.getStartNotification().subscribe(value => {
+
+            if (value)
+                this.onStart();
         });
     },
     data: function () {
         return {
             now: Math.trunc((new Date()).getTime() / 1000),
-            start: Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 25) / 1000)
+            start: Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 1) / 1000),
+            isOver: true,
+            interval: null,
+            exercices: exercices,
+            count: 0
+        }
+    },
+    methods: {
+        onStart: function () {
+
+            this.now = Math.trunc((new Date()).getTime() / 1000);
+            this.start = Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 1) / 1000);
+
+            if (this.isOver === true) { 
+
+                this.isOver = false;
+                if (this.count === 6) this.count = 0;
+
+                this.interval = window.setInterval(() => {
+                    this.now = Math.trunc((new Date()).getTime() / 1000);
+
+                    this.verify();
+                }, 1000);
+            }     
+        },
+        verify: function () {
+            if (this.minutes === 0 && this.seconds === 0) {
+                this.isOver = true;
+                this.count++;
+
+                this.now = Math.trunc((new Date()).getTime() / 1000);
+                this.start = Math.trunc((new Date()).setMinutes((new Date()).getMinutes() + 1) / 1000);
+
+                endSound.play();
+                window.clearInterval(this.interval);
+                NotificationService.sendEndNotification();
+            }
         }
     },
     computed: {
@@ -59,25 +155,44 @@ export default {
 <style lang="scss" scoped>
 .block {
     display: flex;
-    margin: 20px;
+    margin-left: 20px; 
+    margin-bottom: 20px; 
 }
 
 .text {
-    color: #1abc9c;
-    font-size: 25px;
-    font-family: 'Roboto Condensed', serif;
+    color: white;
+    font-size: 20px;
     font-weight: 25;
-    margin-top:10px;
-    margin-bottom: 10px;
+    margin-top:10px !important;
+    margin-bottom: 10px !important;
     text-align: center;
 }
 
 .digit {
-    color: #4b4e4e;
-    font-size: 80px;
-    font-weight: 60;
+    color: white;
+    font-size: 50px;
+    font-weight: 40;
     font-family: 'Roboto', serif;
-    margin: 10px;
+    margin: 10px !important;
     text-align: center;
 }
+
+p { 
+    margin-top: 40px !important;
+}
+
+.btn-aling {
+    margin-left: 10px;
+    margin-top: 25px;
+}
+
+.aling {
+    padding-top: 0 !important;
+}
+
+.card__title {
+    display: block;
+    padding-bottom: 0px;
+}
+
 </style>

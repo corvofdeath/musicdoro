@@ -1,27 +1,24 @@
 <template>
-    <v-app :dark="backgroundActive && enableBackground">
-        <main>
-            <v-container>
-                <h1>Metronome</h1>
-                <v-text-field v-model="timeSignature" label="Time Signature"></v-text-field>
-                <v-text-field v-model="bpm" label="BPM" type="number"></v-text-field>
-                <v-btn color="primary" large @click="toggleRunning">
-                    {{ running ? 'Stop' : 'Start' }}
-                </v-btn>
-                <v-btn large color="secondary" @click="tapTempo">Tap tempo</v-btn>
-                <v-checkbox label="Flash" v-model="enableBackground" class="checkbox"></v-checkbox>
-                <a href="https://github.com/dhulme/metronome/blob/master/README.md" class="about-link">About</a>
-            </v-container>
-        </main>
-    </v-app>
+    <div>
+        <h1>Metronome</h1>
+        <v-text-field v-model="timeSignature" label="Time Signature"></v-text-field>
+        <v-text-field v-model="bpm" label="BPM" type="number"></v-text-field>
+        <v-btn color="primary" large @click="toggleRunning">
+            {{ running ? 'Stop' : 'Start' }}
+        </v-btn>
+        <v-btn large color="secondary" @click="tapTempo">Tap tempo</v-btn>
+        <v-checkbox label="Flash" v-model="enableBackground" class="checkbox"></v-checkbox>
+    </div>
 </template>
 
 <script>
 import VApp from "vuetify/es5/components/VApp";
 import VContainer from "vuetify/es5/components/VGrid/VContainer";
-import VTextField from "vuetify/es5/components/VTextField";
+
 import VBtn from "vuetify/es5/components/VBtn";
 import VCheckbox from "vuetify/es5/components/VCheckbox";
+
+import NotificationService from '../services/notification.js';
 
 const metronomeSound = new Audio(require("@/assets/metronome.wav"));
 const metronomeUpSound = new Audio(require("@/assets/metronome-up.wav"));
@@ -32,7 +29,6 @@ export default {
     components: {
         VApp,
         VContainer,
-        VTextField,
         VBtn,
         VCheckbox
     },
@@ -68,6 +64,11 @@ export default {
         measure: "reset"
     },
     mounted: function () {
+
+        NotificationService.getEndNotification().subscribe(() => {
+            this.running = !this.running;
+        })
+
         const frame = () => {
             const d = performance.now() - this.time;
             if (d / this.totalCount > this.interval) {
@@ -83,7 +84,10 @@ export default {
             this.running = !this.running;
             this.tickActive = false;
 
+            NotificationService.sendStartNotification(this.running);
+
             if (this.running) {
+
                 metronomeUpSound.play();
                 this.updateBackground();
                 setTimeout(() => {
@@ -119,6 +123,7 @@ export default {
         },
         updateBackground() {
             this.backgroundActive = !this.backgroundActive;
+            NotificationService.sendFlashNotification(this.backgroundActive && this.enableBackground)
         },
         tapTempo() {
             if (!this.running) {
@@ -149,11 +154,10 @@ export default {
 };
 </script>
 
-<style lang="stylus">
-@import '../../node_modules/vuetify/src/stylus/app';
+<style>
 </style>
 
-<style>
+<style lang="scss" scoped>
 .checkbox {
     margin-top: 1rem;
     margin-left: 6px;
@@ -170,6 +174,15 @@ export default {
 .about-link {
     position: absolute;
     bottom: 2rem;
+}
+
+button {
+    margin: 0 !important;
+    margin-right: 5px !important;
+}
+
+.checkbox {
+    margin-left: 0 !important;
 }
 </style>
 
