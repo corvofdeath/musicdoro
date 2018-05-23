@@ -211,12 +211,12 @@
                                 </v-card-title>
                                 <v-card-text>
                                     <p>
-                                        Vá para aba de "Exercite" e utilize nosso metrônomo junto com os cronomêtros definidos para os exercícios.
+                                        Vá para aba "Exercite" e utilize nosso metrônomo junto com os cronomêtros definidos para os exercícios.
                                     </p>
                                     <p>
                                        Lembre-se de treinar diariamente e sempre aumentar o andamento a cada dia.
                                     </p>
-                                    <p>
+                                    <p class="text-center">
                                         Boa sorte!
                                     </p>
                                     <div class="text-center">
