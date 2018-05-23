@@ -59,12 +59,13 @@ export default {
 <style lang="scss" scoped>
 .block {
     display: flex;
-    margin: 20px;
+    margin-left: 20px; 
+    margin-bottom: 20px; 
 }
 
 .text {
-    color: #1abc9c;
-    font-size: 25px;
+    color: white;
+    font-size: 20px;
     font-family: 'Roboto Condensed', serif;
     font-weight: 25;
     margin-top:10px;
@@ -73,9 +74,9 @@ export default {
 }
 
 .digit {
-    color: #4b4e4e;
-    font-size: 80px;
-    font-weight: 60;
+    color: white;
+    font-size: 50px;
+    font-weight: 40;
     font-family: 'Roboto', serif;
     margin: 10px;
     text-align: center;

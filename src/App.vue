@@ -34,6 +34,10 @@ export default {
 }
 </script>
 
+<style lang="stylus">
+@import '../node_modules/vuetify/src/stylus/app';
+</style>
+
 
 <style lang="scss">
 body {

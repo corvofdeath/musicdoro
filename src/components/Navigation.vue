@@ -33,14 +33,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a {
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
 
-.bottom-nav .btn {
-    height: 36px;
-    padding: 12px 0 10px;
-}
 </style>
 
