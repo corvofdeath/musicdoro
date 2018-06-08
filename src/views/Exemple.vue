@@ -5,13 +5,13 @@
         <v-carousel-item>
             <div class="padding20"></div>
             <v-layout row align-center>
-                <v-flex xs12 sm6 offset-sm3>
+                <v-flex lg6 offset-lg3>
                     <h1 class="text-center">Pomodoro</h1>
                     <div class="text-center">
                         <img src="../assets/apple.svg" alt="apple-pomodoro" height="42" width="42">
                     </div>
-                    <v-layout row>
-                        <v-flex sm5>
+                    <v-layout>
+                        <v-flex>
                             <v-card>
                                 <v-card-title>
                                     <h3 class="text-center">O que é?</h3>
@@ -32,7 +32,7 @@
                                 </v-card-text>
                             </v-card>
                         </v-flex>
-                        <v-flex sm7>
+                        <v-flex>
                             <v-card>
                                 <v-card-title>
                                     <h3 class="text-center">Passo-a-passo</h3>
@@ -59,13 +59,13 @@
         <v-carousel-item>
             <div class="padding20"></div>
             <v-layout row align-center>
-                <v-flex xs12 sm6 offset-sm3>
+                <v-flex lg6 offset-lg3>
                     <h1 class="text-center">Compasso Musical</h1>
                     <div class="text-center">
                         <img src="../assets/compasso-musical.png" alt="compasso">
                     </div>
-                    <v-layout row>
-                        <v-flex sm5 xs12>
+                    <v-layout>
+                        <v-flex>
                             <v-card>
                                 <v-card-title>
                                     <h3 class="text-center">O que é?</h3>
@@ -84,7 +84,7 @@
                                 </v-card-text>
                             </v-card>
                         </v-flex>
-                        <v-flex sm7 xs12>
+                        <v-flex>
                             <v-card>
                                 <v-card-title>
                                     <h3 class="text-center">Frações de Tempo</h3>
@@ -117,13 +117,13 @@
         <v-carousel-item>
             <div class="padding20"></div>
             <v-layout row align-center>
-                <v-flex xs12 sm6 offset-sm3>
+                <v-flex lg6 offset-lg3>
                     <h1 class="text-center">Metrônomo</h1>
                     <div class="text-center">
                         <img src="../assets/metronome.svg" alt="metronome" width="45" height="42">
                     </div>
-                    <v-layout row>
-                        <v-flex sm5 xs12>
+                    <v-layout>
+                        <v-flex>
                             <v-card>
                                 <v-card-title>
                                     <h3 class="text-center">O que é?</h3>
@@ -141,7 +141,7 @@
                                 </v-card-text>
                             </v-card>
                         </v-flex>
-                        <v-flex sm7 xs12>
+                        <v-flex>
                             <v-card>
                                 <v-card-title>
                                     <h3 class="text-center">Como usar</h3>
@@ -180,13 +180,13 @@
         <v-carousel-item>
             <div class="padding20"></div>
             <v-layout row align-center>
-                <v-flex xs12 sm6 offset-sm3>
+                <v-flex lg6 offset-lg3>
                     <h1 class="text-center">Exercite</h1>
                     <div class="text-center">
                         <img src="../assets/sound.svg" alt="sound" width="45" height="42">
                     </div>
-                    <v-layout row>
-                        <v-flex sm5 xs12>
+                    <v-layout >
+                        <v-flex>
                             <v-card>
                                 <v-card-title>
                                     <h3 class="text-center">Musicdoro</h3>
@@ -204,7 +204,7 @@
                                 </v-card-text>
                             </v-card>
                         </v-flex>
-                        <v-flex sm7 xs12>
+                        <v-flex>
                             <v-card>
                                 <v-card-title>
                                     <h3 class="text-center">Não perca tempo</h3>
@@ -251,7 +251,7 @@ export default {
 
 <style lang="scss" scoped>
 .carousel {
-    height: 88vh;
+    height: calc(100% - 3em);
 }
 
 .content {

@@ -4,15 +4,15 @@
         <h1 class="text-center">Exercícios</h1>
         <div class="padding20"></div>        
         <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-                <v-layout row>
+            <v-flex lg6 offset-lg3>
+                <v-layout>
                     <!-- Metronomo -->
-                    <v-flex sm5>
+                    <v-flex>
                         <metronome></metronome>
                     </v-flex>
 
                     <!-- Timer -->
-                    <v-flex sm7>              
+                    <v-flex>              
                         <timer></timer>
                     </v-flex>
                 </v-layout>
