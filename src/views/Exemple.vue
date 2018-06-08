@@ -5,7 +5,7 @@
         <v-carousel-item>
             <div class="padding20"></div>
             <v-layout row align-center>
-                <v-flex lg7 offset-lg2>
+                <v-flex lg6 offset-lg3>
                     <h1 class="text-center">Pomodoro</h1>
                     <div class="text-center">
                         <img src="../assets/apple.svg" alt="apple-pomodoro" height="42" width="42">
@@ -59,7 +59,7 @@
         <v-carousel-item>
             <div class="padding20"></div>
             <v-layout row align-center>
-                <v-flex lg7 offset-lg2>
+                <v-flex lg6 offset-lg3>
                     <h1 class="text-center">Compasso Musical</h1>
                     <div class="text-center">
                         <img src="../assets/compasso-musical.png" alt="compasso">
@@ -117,7 +117,7 @@
         <v-carousel-item>
             <div class="padding20"></div>
             <v-layout row align-center>
-                <v-flex lg7 offset-lg2>
+                <v-flex lg6 offset-lg3>
                     <h1 class="text-center">Metrônomo</h1>
                     <div class="text-center">
                         <img src="../assets/metronome.svg" alt="metronome" width="45" height="42">
@@ -180,7 +180,7 @@
         <v-carousel-item>
             <div class="padding20"></div>
             <v-layout row align-center>
-                <v-flex lg7 offset-lg2>
+                <v-flex lg6 offset-lg3>
                     <h1 class="text-center">Exercite</h1>
                     <div class="text-center">
                         <img src="../assets/sound.svg" alt="sound" width="45" height="42">

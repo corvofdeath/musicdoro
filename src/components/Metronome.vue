@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="metronome-container">
         <h1>Metronome</h1>
         <v-text-field v-model="timeSignature" label="Time Signature"></v-text-field>
         <v-text-field v-model="bpm" label="BPM" type="number"></v-text-field>
@@ -183,6 +183,10 @@ button {
 
 .checkbox {
     margin-left: 0 !important;
+}
+
+.metronome-container {
+    margin-left: 15px !important;
 }
 </style>
 
