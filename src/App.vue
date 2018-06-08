@@ -72,4 +72,8 @@ body {
 .padding30 {
     padding: 30px;
 }
+
+.content--wrap {
+    height: 91vh;
+}
 </style>
